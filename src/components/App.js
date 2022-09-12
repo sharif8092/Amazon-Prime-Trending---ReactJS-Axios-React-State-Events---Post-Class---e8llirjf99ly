@@ -27,7 +27,7 @@ const App = (props) => {
     
      <h1  data-testid="title">{slides[data].title}</h1>
      <p data-testid="text">{slides[data].text}</p>
-    <button onClick={nextSlide} disabled={(slides.length-2)===data  } data-testid="button-next" >Next</button>
+    <button onClick={nextSlide} disabled={(slides.length-1)===data  } data-testid="button-next" >Next</button>
     <button onClick={prevSlide} disabled={data===0} data-testid="button-prev" >Prev</button>
     <button onClick={firstSlide} disabled={data===0} data-testid="button-restart" >Restart</button>
   
