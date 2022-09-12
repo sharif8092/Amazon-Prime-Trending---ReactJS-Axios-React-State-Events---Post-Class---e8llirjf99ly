@@ -8,6 +8,8 @@ const App = (props) => {
    function nextSlide(){
     // if(data<slides.length-1)
     {setdata(data+1)}
+    console.log(slides.length-2);
+    console.log(data);
 
    }
    function prevSlide(){
@@ -16,13 +18,18 @@ const App = (props) => {
     setdata(data-1)};
 
    }
+   function firstSlide(){
+    setdata(0)
+   }
   return (
     
     <>
     
-     <p>{slides[data].title}</p>
-    <button onClick={nextSlide} >Next</button>
-    <button onClick={prevSlide} disabled={data<1 ? "true" : "false"}>Prev</button>
+     <h1  data-testid="title">{slides[data].title}</h1>
+     <p data-testid="text">{slides[data].text}</p>
+    <button onClick={nextSlide} disabled={(slides.length-2)===data  } data-testid="button-next" >Next</button>
+    <button onClick={prevSlide} disabled={data===0} data-testid="button-prev" >Prev</button>
+    <button onClick={firstSlide} disabled={data===0} data-testid="button-restart" >Restart</button>
   
     
   
