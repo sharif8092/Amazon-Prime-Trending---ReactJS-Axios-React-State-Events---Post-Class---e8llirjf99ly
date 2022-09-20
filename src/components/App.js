@@ -1,42 +1,20 @@
 import React, {Component, useState} from "react";
-import slides from "../data.js";
-import '../styles/App.css'
+import '../styles/App.css';
 
 const App = (props) => {
-   const [data , setdata] = useState(0);
+  const [counter, setCounter] = useState(0);
+  const [data] = useState(props.slides);
 
-   function nextSlide(){
-    // if(data<slides.length-1)
-    {setdata(data+1)}
-    console.log(slides.length-2);
-    console.log(data);
-
-   }
-   function prevSlide(){
-    // if(data>=1)
-    {
-    setdata(data-1)};
-
-   }
-   function firstSlide(){
-    setdata(0)
-   }
+ 
   return (
-    
-    <>
-    
-     <h1  data-testid="title">{slides[data].title}</h1>
-     <p data-testid="text">{slides[data].text}</p>
-    <button onClick={nextSlide} disabled={(slides.length-1)===data  } data-testid="button-next" >Next</button>
-    <button onClick={prevSlide} disabled={data===0} data-testid="button-prev" >Prev</button>
-    <button onClick={firstSlide} disabled={data===0} data-testid="button-restart" >Restart</button>
-  
-    
-  
-    
-    </>
+    <div>
+    <h1 data-testid="title">{data[counter].title}</h1>
+    <p data-testid="text">{data[counter].text}</p>
+    <button data-testid="button-next" disabled={counter === props.slides.length-1 ? true : false} onClick={() =>setCounter(counter+1)}>Next</button>
+    <button data-testid="button-prev" disabled={counter === 0 ? true : false} onClick={() => setCounter(counter-1)}>Prev</button>
+    <button data-testid="button-restart" onClick={() =>setCounter(0)} disabled={counter === 0 ? true : false}>Restart</button>
+    </div>
   )
 }
-
 
 export default App;
