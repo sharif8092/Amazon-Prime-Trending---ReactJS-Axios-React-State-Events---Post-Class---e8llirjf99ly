@@ -51,3 +51,9 @@
     "xml-js": "^1.6.11"
   }
 }
+{
+  "scripts": {
+    "build": "[my-framework] build --output public"
+  }
+}
+
